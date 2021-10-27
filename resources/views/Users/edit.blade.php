@@ -45,9 +45,9 @@
                         <div class="form-floating mb-3">
                             <select class="form-select" name="akses" id="akses" value="{{$users->akses}}">
                                 <option selected>Pilih akses</option>
-                                <option value="1">Katagori 1</option>
-                                <option value="2">Katagori 2</option>
-                                <option value="3">Katagori 3</option>
+                                <option value="1">Admin</option>
+                                <option value="2">Moderator</option>
+                                <option value="3">User</option>
                             </select>
                             <label for="akses" class="form-label">Akses</label>
                         </div>

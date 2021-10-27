@@ -2,12 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
 use App\User;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 class UserController extends Controller
 {
+
     //
     public function index(){
         $users = User::all();
@@ -21,28 +24,26 @@ class UserController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'nis' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'no_hp' => 'required',
-            'alamat' => 'required',
-            'akses' => 'required',
-            'password' => 'required',
+            'nis' => ['required', 'unique:users'],
+            'name' => ['required'],
+            'email' => ['required', 'unique:users'],
+            'no_hp' => ['required', 'unique:users'],
+            'alamat' => ['required'],
+            'akses' => ['required'],
+            'password' => ['required', 'min:6'],
         ]);
 
-//        $users = User::create([
-//            'nis' => $request->input('nis'),
-//            'name' => $request->input('name'),
-//            'email' => $request->input('email'),
-//            'no_hp' => $request->input('no_hp'),
-//            'alamat' => $request->input('alamat'),
-//            'akses' => $request->input('akses'),
-//            'password' => Hash::make($request->password)
-//        ]);
+        $users = User::create([
+            'nis' => $request->input('nis'),
+            'name' => $request->input('name'),
+            'email' => $request->input('email'),
+            'no_hp' => $request->input('no_hp'),
+            'alamat' => $request->input('alamat'),
+            'akses' => $request->input('akses'),
+            'password' => Hash::make($request->password)
+        ]);
 
-        User::create($request->all());
-
-        return redirect('users')->with('insert-message', 'Data successfully inserted');
+        return redirect('users')->with('update-message', 'Data successfully updated');
 
     }
 
@@ -53,13 +54,13 @@ class UserController extends Controller
 
     public function update(Request $request){
         $request->validate([
-            'nis' => 'required',
-            'name' => 'required',
-            'email' => 'required',
-            'no_hp' => 'required',
-            'alamat' => 'required',
-            'akses' => 'required',
-            'password' => 'required',
+            'nis' => ['required', 'unique:users'],
+            'name' => ['required'],
+            'email' => ['required', 'unique:users'],
+            'no_hp' => ['required', 'unique:users'],
+            'alamat' => ['required'],
+            'akses' => ['required'],
+            'password' => ['required', 'min:6'],
         ]);
 
         User::where('id', $request->id)->update([
