@@ -21,24 +21,24 @@
                     </thead>
                     <tbody>
 
-                    @for($i = 1; $i <= 10; $i++)
+                    @foreach($users as $user)
                         <tr>
-                            <td>00000000000000000</td>
-                            <td><i>undefined</i></td>
-                            <td><i>undefined</i></td>
-                            <td><i>08000000000</i></td>
+                            <td>{{ $user->nis }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->alamat }}</td>
+                            <td>{{ $user->no_hp }}</td>
                             <td>
                                 <a href="" class="btn btn-sm btn-warning">
                                     Detail
                                 </a>
 
-                                <a href="" class="btn btn-sm btn-danger">
+                                <a href="cetakkartuanggota/{{$user->id}}/pdf" class="btn btn-sm btn-info">
                                     Cetak Kartu
                                 </a>
                             </td>
                         </tr>
 
-                    @endfor
+                    @endforeach
 
                     </tbody>
                 </table>

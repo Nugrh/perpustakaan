@@ -54,6 +54,10 @@ Route::group(['prefix' => 'users'], function () {
 // TODO: Cetak kartu anggota pages
 Route::group(['prefix' => 'cetakkartuanggota'], function () {
     route::get('/', 'CetakKartuAnggotaController@index')->name('CetakKartuAnggota.index');
+    route::get('{nis}/pdf_view', 'CetakKartuAnggotaController@pdfView')->name('CetakKartuAnggota.pdfView');
+    route::get('{nis}/pdf', 'CetakKartuAnggotaController@exportPDF')->name('CetakKartuAnggota.pdf');
+
+    route::get('/store', 'CetakKartuAnggotaController@store')->name('CetakKartuAnggota.store');
 });
 
 // TODO: Category page

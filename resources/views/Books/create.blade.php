@@ -48,7 +48,7 @@
                     <select class="form-select" name="category_id" id="katagori">
                         <option selected>Pilih katagori</option>
                         @foreach($categorys as $category)
-                            <option value="{{$category['no_rak']}}">{{$category['no_rak'] . ". " . $category['name']}}</option>
+                            <option value="{{$category->no_rak}}">{{$category->no_rak . ". " . $category->name}}</option>
                         @endforeach
                     </select>
                 </div>
