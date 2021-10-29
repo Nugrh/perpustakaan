@@ -9,7 +9,7 @@
                     @csrf
                     <div class="mb-3">
                         <label for="nis" class="form-label">NIS</label>
-                        <input type="text" name="nis" class="form-control{{ $errors->has('nis') ? ' is-invalid' : '' }}" id="nis" value="{{ old('nis') }}" placeholder="nis">
+                        <input type="text" name="nis" class="form-control{{ $errors->has('nis') ? ' is-invalid' : '' }}" id="nis" value="{{ old('nis') }}">
 
                         @if($errors->has('nis'))
                             <span class="invalid-feedback" role="alert">
@@ -19,7 +19,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="name" class="form-label">Nama Anggota</label>
-                        <input type="text" name="name" class="form-control{{$errors->has('name') ? ' is-invalid' : ''}}" id="name" value="{{ old('name') }}" placeholder="Nama Anggota">
+                        <input type="text" name="name" class="form-control{{$errors->has('name') ? ' is-invalid' : ''}}" id="name" value="{{ old('name') }}">
 
                         @if($errors->has('name'))
                             <span class="invalid-feedback" role="alert">
@@ -29,7 +29,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="email" class="form-label">Email</label>
-                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" value="{{ old('email') }}" placeholder="Email">
+                        <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" value="{{ old('email') }}">
 
                         @if($errors->has('email'))
                             <span class="invalid-feedback" role="alert">
@@ -39,7 +39,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="no_hp" class="form-label">No. Handphone</label>
-                        <input type="tel" name="no_hp" class="form-control{{ $errors->has('no_hp') ? ' is-invalid' : ''}}" id="no_hp" value="{{ old('no_hp') }}" placeholder="No. Handphone">
+                        <input type="tel" name="no_hp" class="form-control{{ $errors->has('no_hp') ? ' is-invalid' : ''}}" id="no_hp" value="{{ old('no_hp') }}">
 
                         @if($errors->has('no_hp'))
                             <span class="invalid-feedback" role="alert">
@@ -50,7 +50,7 @@
                     </div>
                     <div class="mb-3">
                         <label for="alamat" class="form-label">Alamat</label>
-                        <input type="text" name="alamat" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : ''}}" id=alamat" value="{{ old('alamat') }}" placeholder="Jumlah buku">
+                        <input type="text" name="alamat" class="form-control{{ $errors->has('alamat') ? ' is-invalid' : ''}}" id=alamat" value="{{ old('alamat') }}">
 
                         @if($errors->has('alamat'))
                             <span class="invalid-feedback" role="alert">
@@ -83,7 +83,7 @@
                             </span>
                         @endif
                     </div>
-                    <button type="submit" class="btn btn-info">Submit</button>
+                    <button type="submit" class="btn btn-info">Tambah Anggota</button>
                     <a href="../books" class="btn btn-light">Cancel</a>
                 </form>
             </div>

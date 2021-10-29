@@ -36,21 +36,21 @@ class BookController extends Controller
         // return redirect('/books');
 
         $this->validate($request, [
-            'category_id' => 'required',
-            'name' => 'required',
-            'description' => 'required',
-            'penerbit' => 'required',
-            'tanggal_terbit' => 'required',
-            'images' => 'required',
-            'stock' => 'required'
+            'category_id' => ['required'],
+            'name' => ['required'],
+            'description' => ['required'],
+            'penerbit' => ['required'],
+            'tanggal_terbit' => ['required'],
+            'images' => ['required'],
+            'stock' => ['required']
         ]);
 
 //        TODO: Upload image to store file
         $photoName = time().'.'.$request->file('images')->getClientOriginalExtension();
         $request->file('images')->move(public_path('/storage/images'), $photoName);
 
-        $books = Book::create([
-
+//        TODO: Create inserted data to database
+        Book::create([
             'category_id' => $request->input('category_id'),
             'name' => $request->input('name'),
             'description' => $request->input('description'),
@@ -87,7 +87,7 @@ class BookController extends Controller
 
         //        TODO: Upload image to store file
         $photoName = time().'.'.$request->file('images')->getClientOriginalExtension();
-        $request->file('images')->move(public_path('/storage/images'), $photoName);
+        $request->hasFile('images')->move(public_path('/storage/images'), $photoName);
 
         $books = Book::where('id', $request->id)->update([
             'category_id' => $request->input('category_id'),

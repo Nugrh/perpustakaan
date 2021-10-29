@@ -14,6 +14,12 @@ class CetakKartuAnggotaController extends Controller
         return view('cetakkartuanggota.index', compact('users'));
     }
 
+    public function detail($id){
+        $users = User::all()->find($id);
+
+        return view('cetakkartuanggota.detail', compact('users'));
+    }
+
     public function pdfView($id){
         $users = User::all()->find($id);
 
@@ -28,4 +34,5 @@ class CetakKartuAnggotaController extends Controller
         $pdf->setPaper('letter', 'landscape');
         return $pdf->download("kartu-anggota.pdf");
     }
+
 }

@@ -28,11 +28,11 @@
                             <td>{{ $user->alamat }}</td>
                             <td>{{ $user->no_hp }}</td>
                             <td>
-                                <a href="" class="btn btn-sm btn-warning">
+                                <a href="{{ route('CetakKartuAnggota.index') }}/{{ $user->id }}/detail" class="btn btn-sm btn-primary">
                                     Detail
                                 </a>
 
-                                <a href="cetakkartuanggota/{{$user->id}}/pdf" class="btn btn-sm btn-info">
+                                <a href="{{ route('CetakKartuAnggota.index') }}/{{$user->id}}/pdf" class="btn btn-sm btn-info">
                                     Cetak Kartu
                                 </a>
                             </td>
@@ -40,8 +40,10 @@
 
                     @endforeach
 
+
+
                     </tbody>
-                </table>
+                 </table>
             </div>
         </div>
     </div>
