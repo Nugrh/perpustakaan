@@ -62,7 +62,9 @@ Route::group(['prefix' => 'cetakkartuanggota'], function () {
 
 // TODO: Category page
 Route::group(['prefix' => 'category'], function () {
-    route::get('/create', 'CategoryController@create')->name('category.create');
+    route::get('/', 'CategoryController@create')->name('category.create');
+    route::get('/{id}/delete', 'CategoryController@destroy')->name('category.create');
+
     route::post('/store', 'CategoryController@store')->name('category.store');
 });
 

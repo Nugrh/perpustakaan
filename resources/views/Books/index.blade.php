@@ -50,11 +50,11 @@ $num = 1;
 {{--                    @for($i = 1; $i <= 10; $i++)--}}
                     @foreach($books as $book)
                         <tr>
-                            <th scope="row"><?= $num++ ?></th>
-                            <td><?= $book['name'] ?></td>
-                            <td><?= $book['penerbit'] ?></td>
-                            <td><?= $book['tanggal_terbit'] ?></td>
-                            <td><?= $book['stock'] ?></td>
+                            <th scope="row">{{ $num++ }}</th>
+                            <td>{{ $book->name }}</td>
+                            <td>{{ $book->penerbit }}</td>
+                            <td>{{ $book->tanggal_terbit }}</td>
+                            <td>{{ $book->stock }}</td>
                             <td>
                                 <a href="books/{{$book->id}}/edit" class="btn btn-sm btn-warning">
                                     <svg width="20" height="20" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

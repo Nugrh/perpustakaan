@@ -5,11 +5,10 @@
     <div class="container">
         <div class="alert alert-secondary">Data Users</div>
 
-
-            <div class="card">
-
-
+        <div class="card">
             <div class="card-body">
+                <div class="alert alert-warning fs-4">Data Users</div>
+
                 @if(session('insert-message'))
                     <div class="alert alert-success">{{session('insert-message')}}</div>
                 @elseif(session('update-message'))
@@ -38,11 +37,11 @@
 {{--                        @for($i = 1; $i <= 5; $i++)--}}
                     @foreach($user as $user)
                         <tr>
-                            <td>{{$user['nis']}}</td>
-                            <td>{{$user['name']}}</td>
-                            <td>{{$user['email']}}</td>
-                            <td>{{$user['no_hp']}}</td>
-                            <td>{{$user['alamat']}}</td>
+                            <td>{{ $user->nis }}</td>
+                            <td>{{ $user->name }}</td>
+                            <td>{{ $user->email }}</td>
+                            <td>{{ $user->no_hp }}</td>
+                            <td>{{ $user->alamat }}</td>
 
                             <td>
                             <a href="/users/{{$user->id}}/edit" class="btn btn-sm btn-warning">

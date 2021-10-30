@@ -146,7 +146,7 @@
                             <a href="{{url('cetakkartuanggota')}}" class="nav-link">Cek Kartu Anggota</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('category/create')}}" class="nav-link">Category</a>
+                            <a href="{{url('category')}}" class="nav-link">Category</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('peminjaman')}}" class="nav-link">Peminjaman</a>
