@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+    @section('title', 'User')
 
     <div class="container">
         <div class="alert alert-secondary">Data Users</div>

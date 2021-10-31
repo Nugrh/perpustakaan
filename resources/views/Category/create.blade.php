@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Category')
 
-    <div class="container">
+
+<div class="container">
         <div class="card">
             <div class="card-body">
                 <span class="fs-4">

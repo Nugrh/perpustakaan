@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'User Card | Detail')
 
-    <div class="card rounded mx-auto fs-5 mt-5" style="width: 600px; height: 320px">
+
+<div class="card rounded mx-auto fs-5 mt-5" style="width: 600px; height: 320px">
         <div class="card-body">
             <strong>Detail Anggota</strong>
             <hr>

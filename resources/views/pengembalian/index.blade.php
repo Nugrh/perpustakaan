@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Pengembalian')
 
     <div class="container">
         <div class="alert alert-secondary">Laporan Data Pengembalian Buku</div>

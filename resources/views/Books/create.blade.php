@@ -1,8 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
+@section('title', 'Book | Create')
 
-    <div class="container">
+
+<div class="container">
         <div class="alert alert-secondary">Tambah buku</div>
 
         <div class="container bg-white p-4 rounded border">
