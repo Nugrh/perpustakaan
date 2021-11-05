@@ -36,11 +36,12 @@
                     <thead>
                     <tr>
                         <th scope="col">Buku</th>
-                        <th scope="col">Nama Siswa</th>
+                        <th scope="col">Nama</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Drasi Peminjaman</th>
+                        <th scope="col">Durasi</th>
                         <th scope="col">Denda</th>
+                        <th scope="col">Action</th>
                     </tr>
                     </thead>
                     <tbody>
@@ -53,6 +54,9 @@
                             <td><i>dd/mm/yyyy</i></td>
                             <td>-0 Hari</td>
                             <td>Rp.0</td>
+                            <td>
+                                <a href="" class="btn btn-sm btn-outline-primary">Dikembalikan</a>
+                            </td>
                         </tr>
 
                     @endfor

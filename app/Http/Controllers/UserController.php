@@ -56,13 +56,15 @@ class UserController extends Controller
     public function update(Request $request){
 
         $request->validate([
+
             'nis' => ['required',
-                Rule::unique('users')->ignore($request->id)
-                ],
+            Rule::unique('users')->ignore($request->id)
+            ],
             'name' => ['required'],
-            'email' => ['required',
-                Rule::unique('users')->ignore($request->id)
-                ],
+            'email' => [
+                'required',
+                Rule::unique('users')->ignore($request->id),
+            ],
             'no_hp' => ['required',
                 Rule::unique('users')->ignore($request->id)
                 ],
@@ -73,7 +75,6 @@ class UserController extends Controller
 
         User::where('id', $request->id)->update([
             'nis' => $request->input('nis'),
-            'nis' => $request->input('nis'),
             'name' => $request->input('name'),
             'email' => $request->input('email'),
             'no_hp' => $request->input('no_hp'),
@@ -82,7 +83,10 @@ class UserController extends Controller
             'password' => Hash::make($request->password)
         ]);
 
+//        dd($request->id);
+
         return redirect('users')->with('update-message', 'Data successfully updated');
+
     }
 
     public function destroy($id){

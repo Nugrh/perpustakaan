@@ -151,12 +151,6 @@
                         <li class="nav-item">
                             <a href="{{url('peminjaman')}}" class="nav-link">Peminjaman</a>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{url('pengembalian')}}" class="nav-link">Pengembalian</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('buat-pengembalian')}}" class="nav-link">Buat pengembalian</a>
-                        </li>
                         <!-- <li class="nav-item">
                             <a href="" class="nav-link">Laporan</a>
                         </li> -->

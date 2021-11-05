@@ -20,12 +20,12 @@
                     <!-- Label text -->
                     <div class="">
                         <div class="">
-                            <label for="" class="text-secondary">Teks label</label>
+                            <label for="" class="text-secondary">Jumlah anggota</label>
                         </div>
 
                         <!-- Tombol -->
                         <div class="">
-                            <button class="btn btn-info" type="submit">Tombol kanan</button>
+                            <button class="btn btn-info" type="submit">Anggota</button>
                         </div>
                     </div>
                 </div>
@@ -44,11 +44,11 @@
                     <!-- Label text -->
                     <div class="">
                         <div class="">
-                            <label for="" class="text-secondary">Teks label</label>
+                            <label for="" class="text-secondary">Jumlah buku</label>
                         </div>
                         <!-- Tombol -->
                         <div class="">
-                            <button class="btn btn-info" type="submit">Tombol kiri</button>
+                            <button class="btn btn-info" type="submit">Buku</button>
                         </div>
                     </div>
 
