@@ -23,8 +23,8 @@
 
             <div class="d-flex justify-content-between">
                 <div class="">
-                    <a href="" class="btn btn-secondary mt-2 mb-2 ">
-                        Rekap Seluruh Laporan
+                    <a href="pinjaman/pinjam" class="btn btn-secondary mt-2 mb-2 ">
+                        Buat pinjaman
                     </a>
                 </div>
                 <div class="">
@@ -42,10 +42,11 @@
                         <th scope="col">Nama Siswa</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Drasi Peminjaman</th>
-                        <th scope="col">Denda</th>
+                        <th scope="col">Durasi</th>
+                        <th scope="col">Status</th>
                     </tr>
                 </thead>
+                <?php $durasi = -2 ?>
                 <tbody>
                     @for($i = 1; $i <= 10; $i++)
                     <tr>
@@ -53,11 +54,15 @@
                         <td><i>undefined</i></td>
                         <td><i>dd/mm/yyyy</i></td>
                         <td><i>dd/mm/yyyy</i></td>
-                        <td>Durasi Habis /-0 Hari</td>
                         <td>
-                            <a href="books/edit" class="btn btn-sm btn-danger">
-                                Kirim denda
-                            </a>
+                            {{ $durasi++ }} Hari
+                        </td>
+                        <td>
+                            @if($durasi > 0)
+                                <a href="" class="btn btn-sm btn-info">Kembalikan</a>
+                            @else
+                                <a href="" class="btn btn-sm btn-danger">Kirim denda</a>
+                            @endif
                         </td>
                     </tr>
 

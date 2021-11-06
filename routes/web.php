@@ -85,4 +85,5 @@ Route::group(['prefix' => 'buat-pengembalian'], function () {
 // TODO: Peminjaman page
 Route::group(['prefix' => 'peminjaman'], function () {
     route::get('/', 'PeminjamanController@index')->name('peminjaman.index');
+    route::get('/pinjam', 'PeminjamanController@create')->name('peminjaman.pinjam');
 });

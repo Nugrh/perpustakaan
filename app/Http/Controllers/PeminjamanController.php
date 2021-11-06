@@ -9,4 +9,8 @@ class PeminjamanController extends Controller
     public function index(){
         return view('peminjaman.index');
     }
+
+    public function create(){
+        return view('peminjaman.pinjaman');
+    }
 }
