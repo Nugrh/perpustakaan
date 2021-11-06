@@ -43,8 +43,8 @@ Route::group(['prefix' => 'books'], function () {
 Route::group(['prefix' => 'users'], function () {
     route::get('/', 'UserController@index')->name('users');
     route::get('/create', 'UserController@create')->name('users.create');
-    route::get('{id}/edit', 'UserController@edit')->name('users.edit');
-    route::get('{id}/delete', 'UserController@destroy')->name('users.delete');
+    route::get('/{id}/edit', 'UserController@edit')->name('users.edit');
+    route::get('/{id}/delete', 'UserController@destroy')->name('users.delete');
 
     route::post('/store', 'UserController@store')->name('users.store');
     route::post('/update', 'UserController@update')->name('users.update');
@@ -63,9 +63,12 @@ Route::group(['prefix' => 'cetakkartuanggota'], function () {
 // TODO: Category page
 Route::group(['prefix' => 'category'], function () {
     route::get('/', 'CategoryController@create')->name('category.create');
+    route::get('/{id}/edit', 'CategoryController@edit')->name('category.edit');
     route::get('/{id}/delete', 'CategoryController@destroy')->name('category.create');
 
     route::post('/store', 'CategoryController@store')->name('category.store');
+    route::post('/update', 'CategoryController@update')->name('category.update');
+
 });
 
 // TODO: Pengembalian page

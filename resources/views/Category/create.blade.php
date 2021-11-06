@@ -10,13 +10,15 @@
                 <span class="fs-4">
                     <div>Tambah Katagori</div>
                 </span>
-
                 @if(session('create-message'))
                     <div class="alert alert-success">{{ session('create-message') }}</div>
+                @elseif(session('update-message'))
+                    <div class="alert alert-success">{{ session('update-message') }}</div>
                 @endif
 
                 <form action="{{route('category.store')}}" method="post">
                     @csrf
+
                     <div class="mb-3 mt-4">
                         <label for="name">Nama Katagori</label>
                         <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" value="{{ old('name') }}">
@@ -66,7 +68,7 @@
                                 <th class="col-1 align-middle">{{ $category->no_rak }}</th>
                                 <td class="align-middle">{{ $category->name }}</td>
                                 <td class="col-2 align-middle">
-                                    <a href="category/{{ $category->id }}/change" class="btn btn-sm btn-warning">Change</a>
+                                    <a href="category/{{ $category->id }}/edit" class="btn btn-sm btn-warning">Change</a>
                                     <a href="category/{{ $category->id }}/delete" onclick="return confirm('Are you sure want to delete this record')" class="btn btn-sm btn-danger">Delete</a>
                                 </td>
                             </tr>

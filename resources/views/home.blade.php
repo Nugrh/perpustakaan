@@ -13,7 +13,7 @@
                     <div class="d-flex justify-content-between">
                         <div class="kiri">{{count($users)}}</div>
                         <div class="kanan">
-                            <img src="{{url('/storage/icon/outline/document-text.svg')}}" alt="">
+                            <img src="{{url('/storage/icon/outline/document-text.svg')}}" alt="Paper.svg">
                         </div>
                     </div>
 

@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Category;
 use Illuminate\Http\Request;
-use Sabberworm\CSS\Rule\Rule;
+use Illuminate\Validation\Rule;
+use Illuminate\Database\Eloquent\Collection as update;
+
 
 class CategoryController extends Controller
 {
@@ -12,6 +14,11 @@ class CategoryController extends Controller
     public function create(){
         $categorys = Category::all();
         return view('Category.create', compact('categorys'));
+    }
+
+    public function edit($id){
+        $category = Category::all()->find($id);
+        return view('Category.edit', compact('category'));
     }
 
     // TODO Return category store page
@@ -33,16 +40,20 @@ class CategoryController extends Controller
 
     public function update(Request $request){
 
+        Category::all();
+
         $this->validate($request,[
-            'name' => ['required'],
-            'no_rak' => ['required',
+            'no_rak' => [
                 Rule::unique('categorys')->ignore($request->id)
                 ]
         ]);
 
-        Category::all()->where('id', $request->id)->update([
-
+        Category::where('id', $request->id)->update([
+            'name' => $request->input('name'),
+            'no_rak' => $request->input('no_rak')
         ]);
+
+        return redirect('category')->with('update-message', 'Data successfully updated');
 
     }
 
