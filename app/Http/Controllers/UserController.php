@@ -45,7 +45,6 @@ class UserController extends Controller
         ]);
 
         return redirect('users')->with('update-message', 'Data successfully updated');
-
     }
 
     public function edit($id){

@@ -86,4 +86,5 @@ Route::group(['prefix' => 'buat-pengembalian'], function () {
 Route::group(['prefix' => 'peminjaman'], function () {
     route::get('/', 'PeminjamanController@index')->name('peminjaman.index');
     route::get('/pinjam', 'PeminjamanController@create')->name('peminjaman.pinjam');
+    route::get('/pinjam?nis={nis}/search', 'PeminjamanController@search')->name('peminjaman.search');
 });

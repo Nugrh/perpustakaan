@@ -23,7 +23,7 @@
 
             <div class="d-flex justify-content-between">
                 <div class="">
-                    <a href="pinjaman/pinjam" class="btn btn-secondary mt-2 mb-2 ">
+                    <a href="{{ route('peminjaman.pinjam') }}" class="btn btn-secondary mt-2 mb-2 ">
                         Buat pinjaman
                     </a>
                 </div>

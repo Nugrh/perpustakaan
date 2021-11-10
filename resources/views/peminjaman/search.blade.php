@@ -36,12 +36,10 @@
                             </div>
                                 <div class="col">
                                     <div class="mb-3">: </div>
-                                    <div class="mb-3">:
-                                    </div>
-                                    <div class="mb-3">:
-                                    </div>
+                                    <div class="mb-3">: </div>
+                                    <div class="mb-3">: </div>
                                 </div>
-                        </div>
+                            </div>
                         <button type="submit" class="btn btn-primary">Submiat</button>
                     </form>
                 </div>
