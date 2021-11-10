@@ -32,16 +32,12 @@
                                 <a href="{{ route('CetakKartuAnggota.index') }}/{{ $user->id }}/detail" class="btn btn-sm btn-primary">
                                     Detail
                                 </a>
-
                                 <a href="{{ route('CetakKartuAnggota.index') }}/{{$user->id}}/pdf" class="btn btn-sm btn-info">
                                     Cetak Kartu
                                 </a>
                             </td>
                         </tr>
-
                     @endforeach
-
-
 
                     </tbody>
                  </table>

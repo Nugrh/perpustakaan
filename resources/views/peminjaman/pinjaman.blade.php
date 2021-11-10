@@ -28,14 +28,14 @@
                                 @endif
                             </strong>
                             <div class="col-3">
-                                <div class="mb-3">Nama Siswa</div>
-                                <div class="mb-3">Alamat</div>
-                                <div class="mb-3">Telp</div>
+                                <div class="mb-2">Nama Siswa</div>
+                                <div class="mb-2">Alamat</div>
+                                <div class="mb-2">Telp</div>
                             </div>
                             <div class="col">
-                                <div class="mb-3">: {{ isset($user) ? $user->name : 'Data tidak ditemukan' }}</div>
-                                <div class="mb-3">: {{ isset($user) ? $user->alamat : 'Data tidak ditemukan' }}</div>
-                                <div class="mb-3">: {{ isset($user) ? $user->no_hp : 'Data tidak ditemukan' }}</div>
+                                <div class="mb-2">: {{ isset($user) ? $user->name : 'Data tidak ditemukan' }}</div>
+                                <div class="mb-2">: {{ isset($user) ? $user->alamat : 'Data tidak ditemukan' }}</div>
+                                <div class="mb-2">: {{ isset($user) ? $user->no_hp : 'Data tidak ditemukan' }}</div>
                             </div>
                         </div>
                     </form>

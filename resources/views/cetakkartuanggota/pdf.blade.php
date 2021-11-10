@@ -31,6 +31,7 @@
         <div class="center">
             <strong>Kartu Anggota Perpustakaan</strong>
             <hr>
+            <pre>id        : {{ $users->id }}</pre>
             <pre>Nama      : {{ $users->name }}</pre>
             <pre>NIS       : {{ $users->nis }}</pre>
             <pre>Alamat    : {{ $users->alamat }}</pre>

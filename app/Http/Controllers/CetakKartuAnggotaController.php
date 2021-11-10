@@ -33,6 +33,7 @@ class CetakKartuAnggotaController extends Controller
         $pdf = PDF::loadView('cetakkartuanggota.pdf', ['users' => $users])->setOptions(['defaultFont' => 'sans-serif']);
         $pdf->setPaper('letter', 'landscape');
         return $pdf->download("kartu-anggota.pdf");
+//        return view('cetakkartuanggota.pdf', compact('users'));
     }
 
 }

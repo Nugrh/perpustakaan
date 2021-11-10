@@ -9,7 +9,11 @@
             <strong>Detail Anggota</strong>
             <hr>
             <div class="row">
-                <div class="col-5">ID</div>
+                <div class="col-5">ID Anggota</div>
+                <div class="col">: {{ $users->id }}</div>
+            </div>
+            <div class="row">
+                <div class="col-5">NIS</div>
                 <div class="col">: {{ $users->nis }}</div>
             </div>
             <div class="row">
