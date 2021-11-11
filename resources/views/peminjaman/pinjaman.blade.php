@@ -3,47 +3,41 @@
 @section('content')
 @section('title', 'Peminjaman')
 
-
 <div class="container">
     <div class="card">
         <div class="card-body border">
 
-            <div class="row mb-5">
-                <div class="col">
-                    <form action="" method="get">
-
+            <form action="{{ route('peminjaman.store') }}" method="post">
+                <div class="row">
+                    <div class="col">
                         <div class="alert alert-info">Peminjam</div>
                         <div class="mb-3">
-                            <div class="d-flex justify-content-between">
-                                <label for="nis" class="form-label">ID Siswa</label>
-                                <label for="nis" class="form-label"><a href="{{ route('users') }}">Cek ID Siswa</a></label>
-                            </div>
-                            <input type="text" class="form-control" name="id" id="id" value="{{ $id }}">
+                            <label for="name" class="form-label">Nama</label>
+                            <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         </div>
-
                         <div class="row">
-                            <strong>
-                                @if(session('exist-message'))
-                                    <strong>{{ session('exist-message') }}</strong>
-                                @endif
-                            </strong>
-                            <div class="col-3">
-                                <div class="mb-2">Nama Siswa</div>
-                                <div class="mb-2">Alamat</div>
-                                <div class="mb-2">Telp</div>
+                            <div class="col mb-3">
+                                <label for="kelas" class="form-label">Kelas</label>
+                                <select name="kelas" id="kelas" class="form-select">
+                                    <option selected disabled>pilih kelas</option>
+                                    <option value="10">10</option>
+                                    <option value="11">11</option>
+                                    <option value="12">12</option>
+                                </select>
                             </div>
-                            <div class="col">
-                                <div class="mb-2">: {{ isset($user) ? $user->name : 'Data tidak ditemukan' }}</div>
-                                <div class="mb-2">: {{ isset($user) ? $user->alamat : 'Data tidak ditemukan' }}</div>
-                                <div class="mb-2">: {{ isset($user) ? $user->no_hp : 'Data tidak ditemukan' }}</div>
+                            <div class="col mb-3">
+                                <label for="jurusan" class="form-label">Jurusan</label>
+                                <select name="jurusan" id="jurusan" class="form-select">
+                                    <option selected disabled>pilih jurusan</option>
+                                    <option value="RPL">RPL</option>
+                                    <option value="MM">MM</option>
+                                    <option value="TKJ">TKJ</option>
+                                </select>
                             </div>
                         </div>
-                    </form>
-                </div>
+                    </div>
 
-                <div class="col">
-                    <form action="" method="post">
-                        @csrf
+                    <div class="col">
                         <div class="alert alert-info">Buku yang dipinjam</div>
 
                         <div class="mb-3">
@@ -60,10 +54,11 @@
                             <option value="15">15 Hari</option>
                             <option value="30">30 Hari</option>
                         </select>
-                    </form>
+                    </div>
                 </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <button type="submit" class="btn btn-primary ">Submit</button>
+                <a class="btn btn-outline-secondary">Cancel</a>
+            </form>
         </div>
     </div>
 </div>
