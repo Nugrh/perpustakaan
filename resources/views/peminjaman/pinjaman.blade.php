@@ -15,6 +15,14 @@
                             <label for="name" class="form-label">Nama</label>
                             <input type="text" class="form-control" name="name" id="name" value="{{ old('name') }}">
                         </div>
+                        <div class="mb-3">
+                            <label for="alamat" class="form-label">Alamat</label>
+                            <input type="text" class="form-control" name="alamat" id="alamat" value="{{ old('alamat') }}">
+                        </div>
+                        <div class="mb-3">
+                            <label for="no_hp" class="form-label">Nomor HP</label>
+                            <input type="tel" class="form-control" no_hp="no_hp" id="no_hp" value="{{ old('no_hp') }}">
+                        </div>
                         <div class="row">
                             <div class="col mb-3">
                                 <label for="kelas" class="form-label">Kelas</label>
@@ -40,24 +48,34 @@
                     <div class="col">
                         <div class="alert alert-info">Buku yang dipinjam</div>
 
-                        <div class="mb-3">
-                            <label for="book" class="form-label">Nama buku</label>
-                            <input type="text" class="form-control" id="book">
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="book_id" class="form-label">Nama buku</label>
+                                <input type="text" class="form-control" name="book_id" id="book_id">
+                            </div>
+                            <div class="col mb-3">
+                                <label for="jumlah" class="form-label">Jumlah buku</label>
+                                <input type="number" class="form-control" name="jumlah" id="jumlah">
+                            </div>
                         </div>
-                        <label for="duration" class="form-label">Durasi peminjaman</label>
+                        <div class="row">
+                            <div class="col mb-3">
+                                <label for="book_id" class="form-label">Tanggal pinjam</label>
+                                <input type="date" class="form-control" name="book_id" id="book_id">
+                            </div>
+                            <div class="col mb-3">
+                                <label for="jumlah" class="form-label">Tanggal kembali</label>
+                                <input type="date" class="form-control" name="jumlah" id="jumlah">
+                            </div>
+                        </div>
 
-                        <select class="form-select" aria-label="Default select example">
-                            <option selected disabled>Pilih durasi peminjaman</option>
-                            <option value="1">1 Hari</option>
-                            <option value="3">3 Hari</option>
-                            <option value="7">7 Hari</option>
-                            <option value="15">15 Hari</option>
-                            <option value="30">30 Hari</option>
-                        </select>
+
                     </div>
                 </div>
-                <button type="submit" class="btn btn-primary ">Submit</button>
+
+                <button type="submit" class="btn btn-primary">Submit</button>
                 <a class="btn btn-outline-secondary">Cancel</a>
+
             </form>
         </div>
     </div>

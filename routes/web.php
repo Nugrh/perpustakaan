@@ -87,5 +87,5 @@ Route::group(['prefix' => 'peminjaman'], function () {
     route::get('/', 'PeminjamanController@index')->name('peminjaman.index');
     route::get('/pinjam', 'PeminjamanController@create')->name('peminjaman.pinjam');
 
-    route::get('/pinjam/store', 'PeminjamanController@store')->name('peminjaman.store');
+    route::post('/pinjam/store', 'PeminjamanController@store')->name('peminjaman.store');
 });

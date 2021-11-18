@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Book;
+use App\Borrowing;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
@@ -24,18 +25,19 @@ class PeminjamanController extends Controller
             'name' => ['required'],
             'kelas' => ['required'],
             'jurusan' => ['required'],
-            'book' => ['required'],
+            'book_id' => ['required'],
             'duration' => ['required'],
         ]);
 
-        $book = Book::where('name', '=', Input::get($request->input('book')))->first();
-        if ($book === null) {
-            echo 'Data not found';
-        } else {
+        Borrowing::create($request,[
+            $request->input('name'),
+            $request->input('kelas'),
+            $request->input('book'),
+            $request->input('duration'),
+        ]);
 
-        }
-
-        return redirect('peminjaman/pinjam');
+//        $book = Book::where('name', '=', Input::get($request->input('book')))->first();
+        return redirect('peminjaman');
     }
 
 }
