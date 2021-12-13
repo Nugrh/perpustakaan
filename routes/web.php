@@ -25,6 +25,7 @@ Route::get('/', function () {
 
 Auth::routes();
 
+// admin page
 Route::group(['middleware' => ['role:admin']], function () {
     Route::get('/dashboard', function (){
         return view('dashboard.index');
