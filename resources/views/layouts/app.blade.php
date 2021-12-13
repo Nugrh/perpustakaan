@@ -148,7 +148,7 @@
                             <a href="{{url('category')}}" class="nav-link">Category</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('peminjaman')}}" class="nav-link">Peminjaman</a>
+                            <a href="{{url('peminjaman')}}" class="nav-link">Data Peminjaman</a>
                         </li>
                         <!-- <li class="nav-item">
                             <a href="" class="nav-link">Laporan</a>

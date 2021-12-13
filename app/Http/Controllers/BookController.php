@@ -13,6 +13,7 @@ class BookController extends Controller
 
         return view('Books.index', compact('books'));
     }
+
     public function create(){
         $categorys = Category::all();
 

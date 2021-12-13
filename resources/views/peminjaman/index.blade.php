@@ -1,14 +1,13 @@
 @extends('layouts.app')
+@section('title', 'Peminjaman')
 
 @section('content')
-@section('title', 'Peminjaman')
 
 
 <div class="container">
     <div class="alert alert-secondary">Data Peminjaman Buku</div>
     <div class="card">
         <div class="card-body">
-
 
             <div class="row">
                 <div class="col">
@@ -33,7 +32,6 @@
                     </a>
                 </div>
             </div>
-
 
             <table class="table table-striped">
                 <thead>
@@ -65,9 +63,7 @@
                             @endif
                         </td>
                     </tr>
-
                     @endfor
-
                 </tbody>
             </table>
         </div>

@@ -5,9 +5,9 @@ $num = 1;
 ?>
 
 @extends('layouts.app')
+@section('title', 'Books')
 
 @section('content')
-    @section('title', 'Books')
 
 <div class="container">
     <div class="alert alert-secondary fs-6">

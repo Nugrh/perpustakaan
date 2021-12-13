@@ -25,6 +25,12 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::group(['middleware' => ['role:admin']], function () {
+    Route::get('/dashboard', function (){
+        return view('dashboard.index');
+    })->name('dashboard');
+});
+
 // TODO: home page
 Route::get('/home', 'HomeController@index')->name('home');
 

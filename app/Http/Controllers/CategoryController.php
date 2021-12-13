@@ -17,8 +17,9 @@ class CategoryController extends Controller
     }
 
     public function edit($id){
-        $category = Category::all()->find($id);
-        return view('Category.edit', compact('category'));
+        $categorys = Category::all();
+        $categoryId = $categorys->find($id);
+        return view('Category.edit', compact('categorys', 'categoryId'));
     }
 
     // TODO Return category store page

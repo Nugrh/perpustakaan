@@ -21,7 +21,7 @@
                     <input type="hidden" name="id" id="id" value="{{ $category->id }}">
                 </div>
                 <div class="mb-3 mt-4">
-                    <label for="name">Nama Katagori</label>
+                    <label for="name">Katagori</label>
                     <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" value="{{ $category->name}}">
 
                     @if($errors->has('name'))
