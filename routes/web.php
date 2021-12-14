@@ -14,6 +14,8 @@
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+Auth::routes();
+
 // TODO: arithmetic page
 Route::get('/uji-coba', 'Test\UjicobaController@index');
 Route::post('/uji-coba/store', 'Test\UjicobaController@store')->name('uji-coba.store');
@@ -23,7 +25,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Auth::routes();
 
 // admin page
 Route::group(['middleware' => ['role:admin']], function () {
@@ -36,7 +37,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 // TODO: Book pages
-Route::group(['prefix' => 'books'], function () {
+Route::prefix('book')->middleware('auth')->group( function () {
     route::get('/', 'BookController@index')->name('books');
     route::get('/create', 'BookController@create')->name('books.create');
     route::get('{id}/edit', 'BookController@edit')->name('books.edit');
@@ -47,7 +48,7 @@ Route::group(['prefix' => 'books'], function () {
 });
 
 // TODO: Users pages
-Route::group(['prefix' => 'users'], function () {
+Route::prefix('user')->middleware('auth')->group( function () {
     route::get('/', 'UserController@index')->name('users');
     route::get('/create', 'UserController@create')->name('users.create');
     route::get('/{id}/edit', 'UserController@edit')->name('users.edit');
@@ -55,7 +56,6 @@ Route::group(['prefix' => 'users'], function () {
 
     route::post('/store', 'UserController@store')->name('users.store');
     route::post('/update', 'UserController@update')->name('users.update');
-
 });
 
 // TODO: Cetak kartu anggota pages
@@ -68,31 +68,30 @@ Route::group(['prefix' => 'cetakkartuanggota'], function () {
 });
 
 // TODO: Category page
-Route::group(['prefix' => 'category'], function () {
+Route::prefix('category')->middleware('auth')->group( function () {
     route::get('/', 'CategoryController@create')->name('category.create');
     route::get('/{id}/edit', 'CategoryController@edit')->name('category.edit');
     route::get('/{id}/delete', 'CategoryController@destroy')->name('category.create');
 
     route::post('/store', 'CategoryController@store')->name('category.store');
     route::post('/update', 'CategoryController@update')->name('category.update');
-
 });
 
 // TODO: Pengembalian page
-Route::group(['prefix' => 'pengembalian'], function () {
+Route::prefix('pengembalian')->middleware('auth')->group( function () {
     route::get('/', 'PengembalianController@index')->name('pengembalian.index');
     route::get('/laporan', 'PengembalianController@laporan')->name('pengembalian.laporan');
 });
 
 // TODO: Pengembalian page
-Route::group(['prefix' => 'buat-pengembalian'], function () {
+Route::prefix('buat-pengembalian')->middleware('auth')->group( function () {
     route::get('/', 'BuatPengembalianController@index')->name('buat-pengembalian.index');
 });
 
 // TODO: Peminjaman page
-Route::group(['prefix' => 'peminjaman'], function () {
+Route::prefix('peminjaman')->middleware('auth')->group( function () {
     route::get('/', 'PeminjamanController@index')->name('peminjaman.index');
     route::get('/pinjam', 'PeminjamanController@create')->name('peminjaman.pinjam');
-
     route::post('/pinjam/store', 'PeminjamanController@store')->name('peminjaman.store');
 });
+

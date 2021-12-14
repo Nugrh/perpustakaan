@@ -45,11 +45,11 @@
                             <td>{{ $user->alamat }}</td>
 
                             <td>
-                            <a href="/users/{{$user->id}}/edit" class="btn btn-sm btn-warning">
+                            <a href="./user/{{$user->id}}/edit" class="btn btn-sm btn-warning">
                                 Edit
                             </a>
 
-                            <a href="/users/{{$user->id}}/delete" onclick="return confirm('Are you sure want to delete this user?')" class="btn btn-sm btn-danger">
+                            <a href="./user/{{$user->id}}/delete" onclick="return confirm('Are you sure want to delete this user?')" class="btn btn-sm btn-danger">
                                 Delete
                             </a>
                             </td>

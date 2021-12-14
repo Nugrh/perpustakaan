@@ -10,6 +10,10 @@ use Illuminate\Database\Eloquent\Collection as update;
 
 class CategoryController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
     // TODO Return category create page
     public function create(){
         $categorys = Category::all();

@@ -136,10 +136,10 @@
                         <li class="nav-item">
                             <a href="{{url('home')}}" class="nav-link">Home</a>
                         </li><li class="nav-item">
-                            <a href="{{url('books')}}" class="nav-link">Buku</a>
+                            <a href="{{url('book')}}" class="nav-link">Buku</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('users')}}" class="nav-link">Users</a>
+                            <a href="{{url('user')}}" class="nav-link">Users</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('cetakkartuanggota')}}" class="nav-link">Cek Kartu Anggota</a>
