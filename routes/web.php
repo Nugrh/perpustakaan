@@ -37,7 +37,7 @@ Route::group(['middleware' => ['role:admin']], function () {
 Route::get('/home', 'HomeController@index')->name('home');
 
 // TODO: Book pages
-Route::prefix('book')->middleware('auth')->group( function () {
+Route::prefix('book')->middleware('role:admin')->group( function () {
     route::get('/', 'BookController@index')->name('books');
     route::get('/create', 'BookController@create')->name('books.create');
     route::get('{id}/edit', 'BookController@edit')->name('books.edit');
@@ -48,8 +48,8 @@ Route::prefix('book')->middleware('auth')->group( function () {
 });
 
 // TODO: Users pages
-Route::prefix('user')->middleware('auth')->group( function () {
-    route::get('/', 'UserController@index')->name('users');
+Route::prefix('user')->middleware('role:super-admin')->group( function () {
+    route::middleware('role:admin')->get('/', 'UserController@index')->name('users');
     route::get('/create', 'UserController@create')->name('users.create');
     route::get('/{id}/edit', 'UserController@edit')->name('users.edit');
     route::get('/{id}/delete', 'UserController@destroy')->name('users.delete');
@@ -59,7 +59,7 @@ Route::prefix('user')->middleware('auth')->group( function () {
 });
 
 // TODO: Cetak kartu anggota pages
-Route::group(['prefix' => 'cetakkartuanggota'], function () {
+Route::prefix('cetakkartuanggota')->middleware('role:admin')->group( function () {
     route::get('/', 'CetakKartuAnggotaController@index')->name('CetakKartuAnggota.index');
     route::get('{id}/pdf', 'CetakKartuAnggotaController@exportPDF')->name('CetakKartuAnggota.pdf');
     route::get('{id}/detail', 'CetakKartuAnggotaController@detail')->name('CetakKartuAnggota.detail');
