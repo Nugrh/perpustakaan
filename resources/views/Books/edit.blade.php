@@ -10,6 +10,11 @@
 
             <form action="{{route('books.update', $book)}}" enctype="multipart/form-data" method="post" >
                 @csrf
+
+                <div class="mb-3">
+                    <input type="hidden" name="id" id="id" value="{{ $book->id }}">
+                </div>
+
                 <div class="mb-3">
                     <label for="name" class="form-label">Judul Buku</label>
                     <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" id="name" value="{{$book->name}}">
@@ -87,7 +92,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
-                <a href="../books" class="btn btn-light">Cancel</a>
+                <a href="{{ route('books') }}" class="btn btn-light">Cancel</a>
             </form>
         </div>
     </div>

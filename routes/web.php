@@ -48,7 +48,7 @@ Route::prefix('book')->middleware('role:admin')->group( function () {
 });
 
 // TODO: Users pages
-Route::prefix('user')->middleware('role:super-admin')->group( function () {
+Route::prefix('user')->middleware('role:admin')->group( function () {
     route::middleware('role:admin')->get('/', 'UserController@index')->name('users');
     route::get('/create', 'UserController@create')->name('users.create');
     route::get('/{id}/edit', 'UserController@edit')->name('users.edit');
@@ -68,7 +68,7 @@ Route::prefix('cetakkartuanggota')->middleware('role:admin')->group( function ()
 });
 
 // TODO: Category page
-Route::prefix('category')->middleware('auth')->group( function () {
+Route::prefix('category')->middleware('role:admin')->group( function () {
     route::get('/', 'CategoryController@create')->name('category.create');
     route::get('/{id}/edit', 'CategoryController@edit')->name('category.edit');
     route::get('/{id}/delete', 'CategoryController@destroy')->name('category.create');
@@ -78,20 +78,22 @@ Route::prefix('category')->middleware('auth')->group( function () {
 });
 
 // TODO: Pengembalian page
-Route::prefix('pengembalian')->middleware('auth')->group( function () {
+Route::prefix('pengembalian')->middleware('role:admin')->group( function () {
     route::get('/', 'PengembalianController@index')->name('pengembalian.index');
     route::get('/laporan', 'PengembalianController@laporan')->name('pengembalian.laporan');
 });
 
 // TODO: Pengembalian page
-Route::prefix('buat-pengembalian')->middleware('auth')->group( function () {
+Route::prefix('buat-pengembalian')->middleware('role:admin')->group( function () {
     route::get('/', 'BuatPengembalianController@index')->name('buat-pengembalian.index');
 });
 
 // TODO: Peminjaman page
-Route::prefix('peminjaman')->middleware('auth')->group( function () {
-    route::get('/', 'PeminjamanController@index')->name('peminjaman.index');
+Route::prefix('peminjaman')->middleware('role:admin')->group( function () {
+    route::get('/', 'PeminjamanController@index')->name('peminjaman');
     route::get('/pinjam', 'PeminjamanController@create')->name('peminjaman.pinjam');
+    route::get('/pinjam/search', 'PeminjamanController@search')->name('peminjaman.search');
+
     route::post('/pinjam/store', 'PeminjamanController@store')->name('peminjaman.store');
 });
 

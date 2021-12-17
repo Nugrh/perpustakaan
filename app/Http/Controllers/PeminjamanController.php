@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Book;
 use App\Borrowing;
 use Illuminate\Http\Request;
 
@@ -16,18 +17,18 @@ class PeminjamanController extends Controller
     }
 
     public function create(){
-        return view('peminjaman.pinjaman');
-
+//        $books = Book::query();
+        return view('peminjaman.pinjaman', compact('books'));
     }
 
     public function store(Request $request){
 
         $request->validate([
-            'name' => ['required'],
-            'kelas' => ['required'],
-            'jurusan' => ['required'],
-            'book_id' => ['required'],
-            'duration' => ['required'],
+            'name'      => ['required'],
+            'kelas'     => ['required'],
+            'jurusan'   => ['required'],
+            'book_id'   => ['required'],
+            'duration'  => ['required'],
         ]);
 
         Borrowing::create($request,[
@@ -36,9 +37,15 @@ class PeminjamanController extends Controller
             $request->input('book'),
             $request->input('duration'),
         ]);
-
-//        $book = Book::where('name', '=', Input::get($request->input('book')))->first();
         return redirect('peminjaman');
+    }
+
+    public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $books = Book::where('name', 'LIKE', "%{$keyword}%");
+
+        return view('peminjaman.pinjaman', compact('books'));
     }
 
 }

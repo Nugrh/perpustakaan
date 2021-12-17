@@ -7,7 +7,7 @@
     <div class="card">
         <div class="card-body border">
 
-            <form action="{{ route('peminjaman.store') }}" method="post">
+{{--            <form action="{{ route('peminjaman.store') }}" method="post">--}}
                 <div class="row">
                     <div class="col">
                         <div class="alert alert-info">Peminjam</div>
@@ -47,36 +47,45 @@
 
                     <div class="col">
                         <div class="alert alert-info">Buku yang dipinjam</div>
-
                         <div class="row">
-                            <div class="col mb-3">
-                                <label for="book_id" class="form-label">Nama buku</label>
-                                <input type="text" class="form-control" name="book_id" id="book_id">
-                            </div>
-                            <div class="col mb-3">
-                                <label for="jumlah" class="form-label">Jumlah buku</label>
-                                <input type="number" class="form-control" name="jumlah" id="jumlah">
-                            </div>
+                            <form action="{{ route('peminjaman.search') }}" method="get">
+                                <div class="col-md-10 mb-3">
+                                    <label for="keyword" class="form-label">Nama buku</label>
+                                    <input type="text" class="form-control" name="keyword" id="keyword">
+                                </div>
+                            </form>
+                            <table class="table">
+                                <thead>
+                                    <tr>
+                                        <th scope="col">Sampul</th>
+                                        <th scope="col">Nama Buku</th>
+                                        <th scope="col">Penulis</th>
+                                        <th scope="col">Action</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @forelse($books as $book)
+                                        <tr>
+                                            <th>{{ asset("storage/images/$book->images") }}</th>
+                                            <td>{{ $book->name }}</td>
+                                            <td>{{ $book->penulis }}</td>
+                                            <td>
+                                                <button type="submit">Select</button>
+                                            </td>
+                                       </tr>
+                                    @empty
+                                        <p>Cari buku</p>
+                                    @endforelse
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="row">
-                            <div class="col mb-3">
-                                <label for="book_id" class="form-label">Tanggal pinjam</label>
-                                <input type="date" class="form-control" name="book_id" id="book_id">
-                            </div>
-                            <div class="col mb-3">
-                                <label for="jumlah" class="form-label">Tanggal kembali</label>
-                                <input type="date" class="form-control" name="jumlah" id="jumlah">
-                            </div>
-                        </div>
-
-
                     </div>
                 </div>
 
                 <button type="submit" class="btn btn-primary">Submit</button>
-                <a class="btn btn-outline-secondary">Cancel</a>
+                <a href="{{ route('peminjaman') }}" class="btn btn-outline-secondary">Cancel</a>
 
-            </form>
+{{--            </form>--}}
         </div>
     </div>
 </div>

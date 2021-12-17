@@ -6,7 +6,7 @@ use Illuminate\Database\Migrations\Migration;
 
 class CreateBooksTable extends Migration
 {
-    /**string
+    /**
      * Run the migrations.
      *
      * @return void

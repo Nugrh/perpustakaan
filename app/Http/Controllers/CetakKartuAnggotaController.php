@@ -11,16 +11,14 @@ class CetakKartuAnggotaController extends Controller
     {
         $this->middleware('auth');
     }
-    //
+
     public function index(){
         $users = User::all();
-
         return view('cetakkartuanggota.index', compact('users'));
     }
 
     public function detail($id){
         $users = User::all()->find($id);
-
         return view('cetakkartuanggota.detail', compact('users'));
     }
 
@@ -37,7 +35,6 @@ class CetakKartuAnggotaController extends Controller
         $pdf = PDF::loadView('cetakkartuanggota.pdf', ['users' => $users])->setOptions(['defaultFont' => 'sans-serif']);
         $pdf->setPaper('letter', 'landscape');
         return $pdf->download("kartu-anggota.pdf");
-//        return view('cetakkartuanggota.pdf', compact('users'));
     }
 
 }
