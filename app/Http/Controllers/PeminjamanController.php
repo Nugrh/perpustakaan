@@ -29,10 +29,12 @@ class PeminjamanController extends Controller
             'jurusan'           => ['required'],
             'tanggal_pinjam'    => ['required'],
             'tanggal_kembali'   => ['required'],
+            'jumlah'            => ['required'],
             'book_id'           => ['required'],
-            'stock'             => ['required'],
         ]);
 
+        $stock = Book::all()->where('id', 1);
+        dd($stock);
         Borrowing::create([
             'name'              => $request->input('name'),
             'nis'               => $request->input('nis'),
@@ -40,8 +42,8 @@ class PeminjamanController extends Controller
             'jurusan'           => $request->input('jurusan'),
             'tanggal_pinjam'    => $request->input('tanggal_pinjam'),
             'tanggal_kembali'   => $request->input('tanggal_kembali'),
+            'jumlah'            => $request->input('jumlah'),
             'book_id'           => $request->input('book_id'),
-            'stock'             => $request->input('stock'),
         ]);
         return redirect('peminjaman');
     }
@@ -49,7 +51,7 @@ class PeminjamanController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
-        $books = Book::where('name', 'LIKE', "%{$keyword}%")->paginate();
+        $books = Book::where('name', 'LIKE', "%{$keyword}%")->paginate(5);
 
         return view('peminjaman.pinjaman', compact('books'));
     }

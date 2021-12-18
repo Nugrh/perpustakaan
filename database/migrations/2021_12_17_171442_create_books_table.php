@@ -24,11 +24,6 @@ class CreateBooksTable extends Migration
             $table->integer('stock');
             $table->timestamps();
         });
-
-
-
-
-
     }
 
     /**
