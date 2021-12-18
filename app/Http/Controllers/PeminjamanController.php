@@ -17,12 +17,12 @@ class PeminjamanController extends Controller
     }
 
     public function create(){
-//        $books = Book::query();
+        $books = Book::paginate(5);
         return view('peminjaman.pinjaman', compact('books'));
     }
 
     public function store(Request $request){
-
+        dd($request->all());
         $request->validate([
             'name'      => ['required'],
             'kelas'     => ['required'],
@@ -43,7 +43,7 @@ class PeminjamanController extends Controller
     public function search(Request $request)
     {
         $keyword = $request->input('keyword');
-        $books = Book::where('name', 'LIKE', "%{$keyword}%");
+        $books = Book::where('name', 'LIKE', "%{$keyword}%")->paginate();
 
         return view('peminjaman.pinjaman', compact('books'));
     }

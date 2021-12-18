@@ -17,13 +17,13 @@ class CreateBorrowingsTable extends Migration
             $table->increments('id');
             $table->string('name');
             $table->string('kelas');
-            $table->string('no_hp');
+            $table->bigInteger('no_hp');
             $table->string('alamat');
             $table->integer('book_id')->unsigned();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->integer('jumlah_pinjam');
-//            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')->references('id')->on('books');
             $table->timestamps();
         });
     }

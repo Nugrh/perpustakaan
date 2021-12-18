@@ -17,14 +17,6 @@ class UserSeeder extends Seeder
          * membuat akun menggunakan seeder
          */
 
-        $super_admin = User::create([
-            'name' => 'Super Admin',
-            'email' => 'super-admin@role.test',
-            'password' => Hash::make('040405')
-        ]);
-
-        $super_admin->assignRole('super-admin');
-
         $admin = User::create([
             'name' => 'Admin',
             'email' => 'admin@role.test',
