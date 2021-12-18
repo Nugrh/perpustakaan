@@ -22,20 +22,26 @@ class PeminjamanController extends Controller
     }
 
     public function store(Request $request){
-        dd($request->all());
         $request->validate([
-            'name'      => ['required'],
-            'kelas'     => ['required'],
-            'jurusan'   => ['required'],
-            'book_id'   => ['required'],
-            'duration'  => ['required'],
+            'name'              => ['required'],
+            'nis'               => ['required'],
+            'kelas'             => ['required'],
+            'jurusan'           => ['required'],
+            'tanggal_pinjam'    => ['required'],
+            'tanggal_kembali'   => ['required'],
+            'book_id'           => ['required'],
+            'stock'             => ['required'],
         ]);
 
-        Borrowing::create($request,[
-            $request->input('name'),
-            $request->input('kelas'),
-            $request->input('book'),
-            $request->input('duration'),
+        Borrowing::create([
+            'name'              => $request->input('name'),
+            'nis'               => $request->input('nis'),
+            'kelas'             => $request->input('kelas'),
+            'jurusan'           => $request->input('jurusan'),
+            'tanggal_pinjam'    => $request->input('tanggal_pinjam'),
+            'tanggal_kembali'   => $request->input('tanggal_kembali'),
+            'book_id'           => $request->input('book_id'),
+            'stock'             => $request->input('stock'),
         ]);
         return redirect('peminjaman');
     }

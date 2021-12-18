@@ -15,15 +15,22 @@ class CreateBorrowingsTable extends Migration
     {
         Schema::create('borrowings', function (Blueprint $table) {
             $table->increments('id');
+
+            $table->Increments('id');
+            $table->Integer('book_id')->unsigned();
             $table->string('name');
             $table->string('kelas');
             $table->bigInteger('no_hp');
             $table->string('alamat');
-            $table->integer('book_id')->unsigned();
             $table->date('tanggal_pinjam');
             $table->date('tanggal_kembali');
             $table->integer('jumlah_pinjam');
-            $table->foreign('book_id')->references('id')->on('books');
+            $table->foreign('book_id')
+                ->references('id')->on('books')
+                ->onDelete('cascade');
+
+
+            $table->timestamps();
             $table->timestamps();
         });
     }
