@@ -8,27 +8,13 @@
     <div class="alert alert-secondary">Data Peminjaman Buku</div>
     <div class="card">
         <div class="card-body">
-
-            <div class="row">
-                <div class="col">
-                    <label for="" class="form-label">Dari tanggal</label>
-                    <input type="date" class="form-control">
-                </div>
-                <div class="col">
-                    <label for="" class="form-label">Dari tanggal</label>
-                    <input type="date" class="form-control">
-                </div>
-            </div>
-
+            <h3 class="alert alert-info">
+                <b>Data peminjaman</b>
+            </h3>
             <div class="d-flex justify-content-between">
                 <div class="">
                     <a href="{{ route('peminjaman.pinjam') }}" class="btn btn-secondary mt-2 mb-2 ">
                         Buat pinjaman
-                    </a>
-                </div>
-                <div class="">
-                    <a href="" class="btn btn-primary mt-2 mb-2 text-right">
-                        Cari Laporan
                     </a>
                 </div>
             </div>
@@ -36,36 +22,50 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th scope="col">Buku</th>
                         <th scope="col">Nama Siswa</th>
+                        <th scope="col">Nomor HP</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Durasi</th>
+                        <th scope="col">Jumlah pinjaman</th>
+                        <th scope="col">Buku</th>
                         <th scope="col">Status</th>
                     </tr>
                 </thead>
-                <?php $durasi = -2 ?>
                 <tbody>
-                    @for($i = 1; $i <= 10; $i++)
-                    <tr>
-                        <td><i>undefined</i></td>
-                        <td><i>undefined</i></td>
-                        <td><i>dd/mm/yyyy</i></td>
-                        <td><i>dd/mm/yyyy</i></td>
-                        <td>
-                            {{ $durasi++ }} Hari
-                        </td>
-                        <td>
-                            @if($durasi > 0)
-                                <a href="" class="btn btn-sm btn-info">Kembalikan</a>
-                            @else
-                                <a href="" class="btn btn-sm btn-danger">Kirim denda</a>
-                            @endif
-                        </td>
-                    </tr>
-                    @endfor
+                    @forelse($borrowers as $borrower)
+                        <tr>
+                            <td>{{ $borrower->name }}</td>
+                            <td>
+                                @if(!empty($borrower->no_hp))
+                                {{ $borrower->no_hp }}
+                                @else
+                                    <p><i>Tidak ada</i></p>
+                                @endif
+                            </td>
+                            <td>{{ $borrower->tanggal_pinjam }}</td>
+                            <td>{{ $borrower->tanggal_kembali }}</td>
+                            <td>{{ $borrower->jumlah }}</td>
+
+                            {{--
+                            Bug:
+                             Tanpa diketahui penyebabnya kolom "book_id" bertambah 1
+                             jadi saya mengurangi 1 untuk mendapatkan nilai yang sama dengan id book
+                             --}}
+                            <td>{{ $books[$borrower->book_id -1]->name}}</td>
+                            <td>
+                                @if($borrower->tanggal_pinjam > $borrower->tanggal_kembali)
+                                    <a href="" class="btn btn-sm btn-danger">Denda 100k</a>
+                                @else
+                                    <a href="" class="btn btn-sm btn-info">Kembalikan</a>
+                                @endif
+                            </td>
+                        </tr>
+                    @empty
+                        <p><b>Tidak ada peminjaman</b></p>
+                    @endforelse
                 </tbody>
             </table>
+            {{ $borrowers->links() }}
         </div>
     </div>
 </div>

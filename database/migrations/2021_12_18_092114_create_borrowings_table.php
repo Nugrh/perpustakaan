@@ -21,7 +21,9 @@ class CreateBorrowingsTable extends Migration
             $table->string('kelas');
             $table->string('jurusan');
             $table->date('tanggal_pinjam');
+            $table->integer('durasi');
             $table->date('tanggal_kembali');
+            $table->bigInteger('no_hp')->nullable();
             $table->integer('jumlah');
 
             $table->foreign('book_id')

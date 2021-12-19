@@ -9,6 +9,15 @@ class Borrowing extends Model
     protected $table = 'borrowings';
 
     protected $fillable = [
-        'jumlah', 'book_id', 'name', 'nis', 'kelas', 'jurusan', 'tanggal_pinjam', 'tanggal_kembali'
+        'name',
+        'book_id',
+        'nis',
+        'kelas',
+        'jurusan',
+        'tanggal_pinjam',
+        'durasi',
+        'tanggal_kembali',
+        'jumlah',
+        'no_hp'
     ];
 }

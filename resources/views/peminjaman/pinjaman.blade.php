@@ -23,6 +23,8 @@
                             @endif
                         </div>
                     </div>
+                </div>
+                <div class="row">
                     <div class="col">
                         <div class="mb-3">
                             <label for="nis" class="form-label">NIS</label>
@@ -35,6 +37,19 @@
                             @endif
                         </div>
                     </div>
+                    <div class="col">
+                        <div class="mb-3">
+                            <label for="no_hp" class="form-label">Nomor HP <i>(opsional)</i></label>
+                            <input type="text" name="no_hp" class="form-control{{$errors->has('no_hp') ? ' is-invalid' : ''}}" id="no_hp" value="{{ old('no_hp') }}">
+
+                            @if($errors->has('no_hp'))
+                                <span class="invalid-feedback" role="alert">
+                                    <strong>{{ $errors->first('no_hp') }}</strong>
+                                </span>
+                            @endif
+                        </div>
+                    </div>
+
                 </div>
                 <div class="row">
                     <div class="col mb-3">
@@ -45,6 +60,7 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
+
                         @if($errors->has('kelas'))
                             <span class="invalid-feedback" role="alert">
                                     <strong>{{ $errors->first('kelas') }}</strong>
@@ -59,6 +75,7 @@
                             <option value="MM">MM</option>
                             <option value="TKJ">TKJ</option>
                         </select>
+
                         @if($errors->has('jurusan'))
                             <span class="invalid-feedback" role="alert">
                                 <strong>{{ $errors->first('jurusan') }}</strong>
@@ -68,19 +85,25 @@
                     <div class="mb-3 col">
                         <label for="tanggal_pinjam" class="form-label">Tanggal pinjam</label>
                         <input type="date" name="tanggal_pinjam" class="form-control{{ $errors->has('tanggal_pinjam') ? ' is-invalid' : '' }}">
+
                         @if($errors->has('tanggal_pinjam'))
                             <span class="invalid-feedback" role="alert">
-                                    <strong>{{ $errors->first('tanggal_pinjam') }}</strong>
-                                </span>
+                                <strong>{{ $errors->first('tanggal_pinjam') }}</strong>
+                            </span>
                         @endif
                     </div>
                     <div class="mb-3 col">
-                        <label for="tanggal_kembali" name="tanggal_kembali" class="form-label">Tanggal kembali</label>
-                        <input type="date" name="tanggal_kembali" class="form-control{{ $errors->has('tanggal_kembali') ? ' is-invalid' : '' }}" value="{{ old('tanggal_kembali') }}">
+                        <label for="durasi" name="durasi" class="form-label">Durasi</label>
+                        <select name="durasi" id="durasi" class="form-select{{ $errors->has('durasi') ? ' is-invalid' : '' }}">
+                            <option selected disabled>Pilih durasi peminjaman</option>
+                            <option value="1">1 Hari</option>
+                            <option value="7">7 Hari</option>
+                            <option value="30">30 Hari</option>
+                        </select>
 
-                        @if($errors->has('tanggal_kembali'))
+                        @if($errors->has('durasi'))
                             <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('tanggal_kembali') }}</strong>
+                                <strong>{{ $errors->first('durasi') }}</strong>
                             </span>
                         @endif
                     </div>
@@ -120,8 +143,6 @@
                                         <th scope="row">
                                             <div class="form-check">
                                                 <input class="form-check-input{{ $errors->has('book_id') ? ' is-invalid' : '' }}" id="book_id" type="radio" name="book_id" value="{{ $book->id }}">
-
-
                                             </div>
                                         </th>
                                         <td>
@@ -133,7 +154,6 @@
                                             {{ $book->stock }}
                                         </td>
                                     </tr>
-
                                 @empty
                                     <p><i><b>Buku tidak ditemukan, silahkan masukkan keyword dengan benar</b></i></p>
                                 @endforelse
@@ -142,10 +162,9 @@
                         {{ $books->links() }}
                     </div>
                 </div>
-                <button type="submit">submit</button>
+                <button type="submit" class="btn btn-primary">submit</button>
+                <a href="{{ route('peminjaman') }}" class="btn btn-outline-secondary">Cancel</a>
             </form>
-        </div>
-            <a href="{{ route('peminjaman') }}" class="btn btn-outline-secondary">Cancel</a>
         </div>
     </div>
 </div>

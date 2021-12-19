@@ -137,25 +137,13 @@
                             <a href="{{url('home')}}" class="nav-link">Home</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{url('#')}}" class="nav-link">Pinjam Buku</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('#')}}" class="nav-link">Daftar Buku</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('#')}}" class="nav-link">Katagori Buku</a>
-                        </li>
-
-                        @role('admin')
-                        {{--admin--}}
-                        <li class="nav-item">
-                            <a href="{{url('home')}}" class="nav-link">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('peminjaman')}}" class="nav-link">Data Peminjaman</a>
+                            <a href="{{url('user')}}" class="nav-link">User</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('book')}}" class="nav-link">Buku</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{url('peminjaman')}}" class="nav-link">Data Peminjaman</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{url('cetakkartuanggota')}}" class="nav-link">Cek Kartu Anggota</a>
@@ -163,29 +151,6 @@
                         <li class="nav-item">
                             <a href="{{url('category')}}" class="nav-link">Category</a>
                         </li>
-                        @endrole
-
-                        {{--super admin--}}
-                        @role('super-admin')
-                        <li class="nav-item">
-                            <a href="{{url('home')}}" class="nav-link">Dashboard</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('peminjaman')}}" class="nav-link">Data Peminjaman</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('book')}}" class="nav-link">Buku</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('cetakkartuanggota')}}" class="nav-link">Cek Kartu Anggota</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('category')}}" class="nav-link">Category</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{url('user')}}" class="nav-link">Users</a>
-                        </li>
-                        @endrole
                     </ul>
                 </div>
 
