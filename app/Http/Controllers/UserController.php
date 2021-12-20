@@ -17,11 +17,10 @@ class UserController extends Controller
         $this->middleware('auth');
     }
 
-    //
     public function index(){
-        $user = User::all();
+        $users = User::paginate(10);
 
-        return view("Users.index", compact('user'));
+        return view("Users.index", compact('users'));
     }
 
     public function create(){
@@ -30,13 +29,13 @@ class UserController extends Controller
 
     public function store(Request $request){
         $request->validate([
-            'nis'       => ['required', 'unique:users'],
-            'name'      => ['required'],
-            'email'     => ['required', 'unique:users'],
-            'no_hp'     => ['required', 'unique:users'],
-            'alamat'    => ['required'],
-            'akses'     => ['required'],
-            'password'  => ['required', 'min:6'],
+            'nis'       => 'required|unique:users',
+            'name'      => 'required',
+            'email'     => 'required|unique:users',
+            'no_hp'     => 'required|unique:users',
+            'alamat'    => 'required',
+            'akses'     => 'required',
+            'password'  => 'required|min:6',
         ]);
 
         User::create([
@@ -85,7 +84,8 @@ class UserController extends Controller
             'akses'     => $request->input('akses'),
             'password'  => Hash::make($request->password)
         ]);
-        return redirect('users')->with('update-message', 'Data successfully updated');
+        return redirect('users')
+            ->with('update-message', 'Data successfully updated');
     }
 
     public function destroy($id){

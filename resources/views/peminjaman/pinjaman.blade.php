@@ -56,9 +56,9 @@
                         <label for="kelas" class="form-label">Kelas</label>
                         <select name="kelas" id="kelas" class="form-select{{$errors->has('kelas') ? ' is-invalid' : ''}}">
                             <option selected disabled>pilih kelas</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            <option value="10" {{ old('kelas') == '10' ? 'selected' : '' }}>10</option>
+                            <option value="11" {{ old('kelas') == '11' ? 'selected' : '' }}>11</option>
+                            <option value="12" {{ old('kelas') == '12' ? 'selected' : '' }}>12</option>
                         </select>
 
                         @if($errors->has('kelas'))
@@ -71,9 +71,9 @@
                         <label for="jurusan" class="form-label">Jurusan</label>
                         <select name="jurusan" id="jurusan" class="form-select{{ $errors->has('jurusan') ? ' is-invalid' : '' }}">
                             <option selected disabled>pilih jurusan</option>
-                            <option value="RPL">RPL</option>
-                            <option value="MM">MM</option>
-                            <option value="TKJ">TKJ</option>
+                            <option value="RPL" {{ old('jurusan') == 'RPL' ? 'selected' : '' }}>RPL</option>
+                            <option value="MM" {{ old('jurusan') == 'MM' ? 'selected' : '' }}>MM</option>
+                            <option value="TKJ" {{ old('jurusan') == 'TKJ' ? 'selected' : '' }}>TKJ</option>
                         </select>
 
                         @if($errors->has('jurusan'))
@@ -84,7 +84,7 @@
                     </div>
                     <div class="mb-3 col">
                         <label for="tanggal_pinjam" class="form-label">Tanggal pinjam</label>
-                        <input type="date" name="tanggal_pinjam" class="form-control{{ $errors->has('tanggal_pinjam') ? ' is-invalid' : '' }}">
+                        <input type="date" name="tanggal_pinjam" class="form-control{{ $errors->has('tanggal_pinjam') ? ' is-invalid' : '' }}" value="{{ old('tanggal_pinjam') }}">
 
                         @if($errors->has('tanggal_pinjam'))
                             <span class="invalid-feedback" role="alert">
@@ -96,9 +96,9 @@
                         <label for="durasi" name="durasi" class="form-label">Durasi</label>
                         <select name="durasi" id="durasi" class="form-select{{ $errors->has('durasi') ? ' is-invalid' : '' }}">
                             <option selected disabled>Pilih durasi peminjaman</option>
-                            <option value="1">1 Hari</option>
-                            <option value="7">7 Hari</option>
-                            <option value="30">30 Hari</option>
+                            <option value="1" {{ old('durasi') == '1' ? 'selected' : '' }}>1 Hari</option>
+                            <option value="7" {{ old('durasi') == '7' ? 'selected' : '' }}>7 Hari</option>
+                            <option value="30" {{ old('durasi') == '30' ? 'selected' : '' }}>30 Hari</option>
                         </select>
 
                         @if($errors->has('durasi'))
@@ -138,6 +138,11 @@
                                 </tr>
                             </thead>
                             <tbody>
+                                @if(session('stock'))
+                                    <span class="text-danger">
+                                        <strong><i>{{ session('stock') }}</i></strong>
+                                    </span>
+                                @endif
                                 @forelse($books as $book)
                                     <tr>
                                         <th scope="row">
@@ -151,6 +156,7 @@
                                         <td>{{ $book->name }}</td>
                                         <td>{{ $book->penerbit }}</td>
                                         <td class="col-1">
+                                            <input type="hidden" name="stock" value="{{ $book->stock }}">
                                             {{ $book->stock }}
                                         </td>
                                     </tr>

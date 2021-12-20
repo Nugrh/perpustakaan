@@ -26,7 +26,7 @@
                         <th scope="col">Nomor HP</th>
                         <th scope="col">Tanggal Pinjam</th>
                         <th scope="col">Tanggal Kembali</th>
-                        <th scope="col">Jumlah pinjaman</th>
+                        <th scope="col">Jumlah</th>
                         <th scope="col">Buku</th>
                         <th scope="col">Status</th>
                     </tr>
@@ -34,10 +34,10 @@
                 <tbody>
                     @forelse($borrowers as $borrower)
                         <tr>
-                            <td>{{ $borrower->name }}</td>
+                            <td>{{ $borrower->name }}</td>{{ old('durasi') == '1' ? 'selected' : '' }}
                             <td>
                                 @if(!empty($borrower->no_hp))
-                                {{ $borrower->no_hp }}
+                                    {{ $borrower->no_hp }}
                                 @else
                                     <p><i>Tidak ada</i></p>
                                 @endif

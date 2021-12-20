@@ -6,6 +6,8 @@ use App\Book;
 use App\Borrowing;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class PeminjamanController extends Controller
 {
@@ -29,36 +31,41 @@ class PeminjamanController extends Controller
 
     public function store(Request $request){
 
-//        dd($request->all());
+        $book = Book::all()->find($request->book_id);
 
         $request->validate([
             'name'              => 'required',
-            'nis'               => 'required',
+            'nis'               => 'required|min:10|max:10',
             'kelas'             => 'required',
             'jurusan'           => 'required',
             'tanggal_pinjam'    => 'required',
             'durasi'            => 'required',
-            'no_hp'             => 'nullable|numeric',
+            'no_hp'             => 'nullable|numeric|min:8',
             'jumlah'            => 'required',
             'book_id'           => 'required',
         ]);
+
+//        mengurangi jumlah buku sesuai dengan jumlah buku yang dipinjam
+        $jumlah = $book->stock - $request->jumlah;
+
+        /**
+         * Jika stok dibawah 0, tampilkan pesan error
+         *
+         * @return Redirect
+         */
+        if ($jumlah < 0){
+            return Redirect::back()->withInput(Input::all())->with('stock', 'Stok tidak tersedia');
+        }
 
 //        membuat tanggal kembali berdasarkan durasi yang dipilih
         $tanggal_pinjam = $request->input('tanggal_pinjam');
         $hari_pinjam = Carbon::parse($tanggal_pinjam)->format('d');
         $tanggal_kembali = (new Carbon($tanggal_pinjam))->day($hari_pinjam + $request->input('durasi'));
 
-        $book = Book::all()->find($request->book_id);
-
-//        mengurangi jumlah buku sesuai dengan jumlah buku yang dipinjam
-        $jumlah = $book->stock - $request->jumlah;
-
 //        memperbarui record stock buku
         $book->update([
             'stock' => $jumlah
         ]);
-
-
 
         Borrowing::create([
             'name'              => $request->input('name'),
