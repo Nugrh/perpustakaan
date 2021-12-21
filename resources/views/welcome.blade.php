@@ -92,7 +92,6 @@
             </div>
 
             <div class="links">
-                <a href="http://127.0.0.1:8000/uji-coba">Aritmatika</a>
                 <a href="https://github.com/Nugrh/">GitHub</a>
             </div>
 

@@ -35,13 +35,13 @@ class PeminjamanController extends Controller
 
         $request->validate([
             'name'              => 'required',
-            'nis'               => 'required|min:10|max:10',
+            'nis'               => 'required|digits:10',
             'kelas'             => 'required',
             'jurusan'           => 'required',
             'tanggal_pinjam'    => 'required',
             'durasi'            => 'required',
-            'no_hp'             => 'nullable|numeric|min:8',
-            'jumlah'            => 'required',
+            'no_hp'             => 'nullable|digits:12',
+            'jumlah'            => 'required|numeric|min:1|max:5',
             'book_id'           => 'required',
         ]);
 
@@ -85,7 +85,32 @@ class PeminjamanController extends Controller
         return redirect('peminjaman');
     }
 
+    public function destroy($id)
+    {
+        $borrowing = Borrowing::all()->find($id);
+        $books = Book::all()->find($borrowing->book_id);
+
+        $stok_buku = $borrowing->jumlah + $books->stock;
+
+//        mengupdate record stok buku
+        $books->update([
+            'stock' => $stok_buku
+        ]);
+
+        $borrowing->delete();
+
+        return Redirect::back()->with('success', 'Buku berhasil dikembalikan');
+    }
+
     public function search(Request $request)
+    {
+        $keyword = $request->input('keyword');
+        $books = Book::all();
+        $borrowers = Borrowing::where('name', 'LIKE', "%{$keyword}%")->paginate(5);
+        return view('peminjaman.index', compact('borrowers', 'books'));
+    }
+
+    public function bookSearch(Request $request)
     {
         $keyword = $request->input('keyword');
         $books = Book::where('name', 'LIKE', "%{$keyword}%")->paginate(5);

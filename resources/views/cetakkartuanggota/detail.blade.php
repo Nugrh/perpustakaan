@@ -4,8 +4,8 @@
 @section('title', 'User Card | Detail')
 
 
-<div class="card rounded mx-auto fs-5 mt-5" style="width: 600px; height: 320px">
-        <div class="card-body">
+<div class="card rounded mx-auto border-0 fs-5 mt-5" style="width: 600px; height: 320px">
+        <div class="card-body shadow-sm ">
             <strong>Detail Anggota</strong>
             <hr>
             <div class="row">
@@ -32,10 +32,9 @@
                 <div class="col-5">Address</div>
                 <div class="col">: {{ $users->alamat }}</div>
             </div>
-
         </div>
-        <a href="{{ route('CetakKartuAnggota.index') }}" class="btn btn-default btn-outline-secondary">Kembali</a>
 
+    <a href="{{ route('CetakKartuAnggota.index') }}" class="btn btn-default btn-light shadow-sm ">Kembali</a>
 
     </div>
 

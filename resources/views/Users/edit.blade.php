@@ -8,7 +8,7 @@
                 <div class="card-body">
                     <form action="{{route('users.update', $users)}}" enctype="multipart/form-data" method="post" >
                         @csrf
-{{--                        TODO: Get ID--}}
+                        {{--TODO: Get ID--}}
                         <div class="mb-3">
                             <input type="hidden" name="id" id="id" value="{{ $users->id }}">
                         </div>
@@ -65,21 +65,6 @@
                             @endif
                         </div>
                         <div class="mb-3">
-                            <label for="akses" class="form-label">Akses</label>
-                            <select class="form-select{{ $errors->has('akses') ? ' is-invalid' : ''}}" name="akses" id="akses" value="{{ $users->akses }}">
-                                <option selected disabled>Pilih Akses</option>
-                                <option value="1">Admin</option>
-                                <option value="2">Moderator</option>
-                                <option value="3">User</option>
-                            </select>
-
-                            @if($errors->has('akses'))
-                                <span class="invalid-feedback" role="alert">
-                                <strong>{{ $errors->first('akses') }}</strong>
-                            </span>
-                            @endif
-                        </div>
-                        <div class="mb-3">
                             <label for="password" class="form-label">Password</label>
                             <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : ''}}" id="password">
 
@@ -90,7 +75,7 @@
                             @endif
                         </div>
                         <button type="submit" class="btn btn-info">Submit</button>
-                        <a href="../books" class="btn btn-light">Cancel</a>
+                        <a href="{{ route('users') }}" class="btn btn-light">Cancel</a>
                     </form>
                 </div>
             </div>

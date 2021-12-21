@@ -6,6 +6,8 @@ use App\Category;
 use App\Book;
 use Illuminate\Database\QueryException;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Redirect;
 
 class BookController extends Controller
 {
@@ -15,7 +17,7 @@ class BookController extends Controller
     }
 
     public function index(){
-        $books = Book::all();
+        $books = Book::paginate(10);
         return view('Books.index', compact('books'));
     }
 
@@ -26,13 +28,13 @@ class BookController extends Controller
 
     public function store(Request $request){
         $this->validate($request, [
-            'category_id'       => ['required'],
-            'name'              => ['required'],
-            'description'       => ['required'],
-            'penerbit'          => ['required'],
-            'tanggal_terbit'    => ['required'],
-            'images'            => ['required'],
-            'stock'             => ['required']
+            'category_id'       => 'required',
+            'name'              => 'required',
+            'description'       => 'required',
+            'penerbit'          => 'required',
+            'tanggal_terbit'    => 'required',
+            'images'            => 'required|image|mimes:jpg,png,jpeg,svg',
+            'stock'             => 'required'
         ]);
 
 //        TODO: Upload image to store file
@@ -95,9 +97,17 @@ class BookController extends Controller
     }
 
     public function destroy($id){
-        $book = Book::all()->find($id)->delete();
-
+        Book::all()->find($id)->delete();
         return redirect('books')->with('delete-message', 'Data successfully deleted');
+    }
 
+    public function search(Request $request)
+    {
+        $keyword = $request->keyword;
+        $books = Book::where(
+            'name', 'LIKE' , "%{$keyword}%"
+        )->paginate('10');
+
+        return view('books.index', compact('books'));
     }
 }

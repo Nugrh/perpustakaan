@@ -10,7 +10,7 @@
         <div class="container bg-white p-4 rounded border">
             <div class="alert alert-warning fs-4 font-weight-bold">Masukkan data buku</div>
 
-            <form action="{{ route('books.store') }}" enctype="multipart/form-data" method="post" >
+            <form action="{{ route('book.store') }}" enctype="multipart/form-data" method="post" >
                 @csrf
                 <div class="mb-3">
                     <label for="name" class="form-label">Judul Buku</label>
@@ -68,7 +68,7 @@
                     <select class="form-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id" id="katagori" value="{{ old('category_id') }}">
                         <option selected disabled>Pilih katagori</option>
                         @foreach($categorys as $category)
-                            <option value="{{$category->no_rak}}">{{$category->no_rak . ". " . $category->name}}</option>
+                            <option value="{{$category->no_rak}}" {{ old('category_id') == $category->no_rak ? 'selected' : '' }}>{{$category->no_rak . ". " . $category->name}}</option>
                         @endforeach
                     </select>
 
@@ -80,7 +80,7 @@
                 </div>
                 <div class="mb-3">
                     <label for="image"  class="form-label">Cover Buku</label>
-                    <input type="file" name="images" class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" id="image" value="{{ old('images') }}">
+                    <input type="file" name="images" class="form-control{{ $errors->has('images') ? ' is-invalid' : '' }}" id="image">
 
                     @if($errors->has('images'))
                         <span class="invalid-feedback" role="alert">
@@ -88,8 +88,9 @@
                         </span>
                     @endif
                 </div>
+
                 <button type="submit" class="btn btn-info">Submit</button>
-                <a href="../books" class="btn btn-light">Cancel</a>
+                <a href="{{ route('book') }}" class="btn btn-light">Cancel</a>
             </form>
         </div>
 

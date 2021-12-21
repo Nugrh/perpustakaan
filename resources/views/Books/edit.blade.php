@@ -8,7 +8,7 @@
         <div class="card-body">
             <div class="alert alert-warning">Edit Data Buku</div>
 
-            <form action="{{route('books.update', $book)}}" enctype="multipart/form-data" method="post" >
+            <form action="{{route('book.update', $book)}}" enctype="multipart/form-data" method="post" >
                 @csrf
 
                 <div class="mb-3">
@@ -68,10 +68,10 @@
                 </div>
                 <div class="mb-3">
                     <label for="katagori" class="form-label">Pilih katagori</label>
-                    <select class="form-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id" id="katagori" value="{{$book->category_id}}">
+                    <select class="form-select {{ $errors->has('category_id') ? 'is-invalid' : '' }}" name="category_id" id="katagori">
                         <option selected disabled>Pilih katagori</option>
                         @foreach($categorys as $category)
-                            <option value="{{$category->no_rak}}">{{$category->no_rak . ". " . $category->name}}</option>
+                            <option value="{{$category->no_rak}}" {{ $book->category_id == $category->no_rak ? 'selected' : '' }}>{{$category->no_rak . ". " . $category->name}}</option>
                         @endforeach
                     </select>
 
@@ -92,7 +92,7 @@
                     @endif
                 </div>
                 <button type="submit" class="btn btn-info">Submit</button>
-                <a href="{{ route('books') }}" class="btn btn-light">Cancel</a>
+                <a href="{{ route('book') }}" class="btn btn-light">Cancel</a>
             </form>
         </div>
     </div>

@@ -20,7 +20,7 @@ class CreateBooksTable extends Migration
             $table->string('description');
             $table->string('penerbit');
             $table->date('tanggal_terbit');
-            $table->string('images');
+            $table->string('images')->default(asset('storage/images/no_image.png'));
             $table->integer('stock');
             $table->timestamps();
         });
